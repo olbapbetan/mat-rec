@@ -53,7 +53,9 @@ function dibujarTablero(tableData) {
 
 
 function hayCamino(tablero, inicio_i, inicio_j, fin_i, fin_j){
-	if ((inicio_i >= dimTablero || inicio_j >= dimTablero) || (inicio_i < 0 || inicio_j < 0))
+	if (objTablero.tablero[fin_i][fin_j] == 1)
+		return false;
+	else if ((inicio_i >= dimTablero || inicio_j >= dimTablero) || (inicio_i < 0 || inicio_j < 0))
 		return false;
 	else if (objTablero.tablero[inicio_i][inicio_j] != 0)
 		return false;
@@ -116,7 +118,7 @@ function invocarJugar(){
 	} else
 	document.getElementById("res").innerHTML = "NO hay camino.";
 
-	ruta.forEach(function (currentValue, index, array){
+	ruta.forEach(function(currentValue, index, array){
 		var ul = document.getElementById("lista_ruta");
 		var li = document.createElement("li");
 		li.appendChild(document.createTextNode(currentValue));
