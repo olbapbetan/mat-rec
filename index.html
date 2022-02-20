@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Juego: mat-rec</title>
+	<link rel="stylesheet" type="text/css" class="ui" href="https://semantic-ui.com/dist/semantic.min.css">
+	<link rel="stylesheet" type="text/css" class="ui" href="styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="juego.js"></script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td width="10%"></td>
+			<td width="35%" valign="text-top">
+				<center>
+					<form style="text-align: left;" class="ui form">
+						<h4 class="ui dividing header">Configuración de jugada</h4>
+						<div class="fields">
+							<div class="field">
+								<label>Dimensión del tablero</label>
+								<div class="ui input">
+									<input type="text" value="5" id="dim">
+								</div>
+							</div>
+							<div class="field">
+								<label>Probabilidad de obstáculos</label>
+								<div class="ui right labeled input">
+									<input type="text" value="30" id="prob">
+									<label class="ui label">%</label>
+								</div>
+							</div>
+						</div>
+						<div class="field">
+							<label>Celda de partida (inicial)</label>
+							<div class="fields">
+								<div class="field">
+									<input type="text" placeholder="Fila" value="1" id="iInicial">
+								</div>
+								<div class="field">
+									<input type="text" placeholder="Columna" value="1" id="jInicial">
+								</div>
+							</div>
+						</div>
+						<div class="field">
+							<label>Celda de llegada (final)</label>
+							<div class="fields">
+								<div class="field">
+									<input type="text" placeholder="Fila"value="3" id ="iFinal">
+								</div>
+								<div class="field">
+									<input type="text" placeholder="Columna" value="3" id="jFinal">
+								</div>
+							</div>
+						</div>
+						<div class="ui button" onclick="invocarDibujarTablero()">
+							Generar tablero
+						</div>
+						<div class="ui primary button" onclick="invocarJugar()" id="btn_jugar" style="display: none;">
+							Jugar partida
+						</div>
+					</form>
+				</center>
+			</td>
+			<td width="10%"></td>
+			<td width="35%" valign="top">
+				<h4 class="ui horizontal divider header" style="display:none;" id="titulo_tablero">
+					<i class="map icon"></i>
+					Tablero
+				</h4>
+				<br><table class="tg" align="center" id="tablero"></table><br>
+				<p id="res"></p>
+
+				<h4 class="ui horizontal divider header" style="display:none;" id="titulo_ruta">
+					<i class="map icon"></i>
+					Ruta posible
+				</h4>
+				<ul class="ui list" id="lista_ruta"></ul>
+				<br>
+			</td>
+			<td width="10%"></td>
+		</tr>
+	</table>
+
+	<script>
+		// variables globales
+		var dimTablero;
+		var probPeones;
+		var objTablero;
+
+		var iInicial;
+		var jInicial;
+		var iFinal;
+		var jFinal;
+
+		var ruta;
+	</script>
+</body>
+</html>
