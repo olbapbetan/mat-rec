@@ -34,10 +34,10 @@ function dibujarTablero(tableData) {
 				cell.appendChild(document.createTextNode("\xa0"));
 				cell.style.backgroundColor = "#ffffff";
 			} else if (cellData == 1){
-				cell.appendChild(document.createTextNode("P"));
+				cell.appendChild(document.createTextNode("❌"));
 				cell.style.backgroundColor = "#ff2c2c";
 			} else {
-				cell.appendChild(document.createTextNode("C"));
+				cell.appendChild(document.createTextNode("🚙"));
 				cell.style.backgroundColor = "#71cd48";
 			}
 
@@ -113,10 +113,10 @@ function invocarJugar(){
 	dibujarTablero(objTablero.tablero);
 
 	if (resultado){
-		document.getElementById("res").innerHTML = "SÍ hay camino.";
+		document.getElementById("res").innerHTML = "✔️ SÍ hay camino.";
 		$("#titulo_ruta").show();
 	} else
-	document.getElementById("res").innerHTML = "NO hay camino.";
+	document.getElementById("res").innerHTML = "❌ NO hay camino.";
 
 	ruta.forEach(function(currentValue, index, array){
 		var ul = document.getElementById("lista_ruta");
