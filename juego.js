@@ -53,7 +53,7 @@ function dibujarTablero(tableData) {
 
 
 function hayCamino(inicio_i, inicio_j, fin_i, fin_j){
-	if ((inicio_i >= dimTablero || inicio_j >= dimTablero) || (inicio_i < 0 || inicio_j < 0))
+	if ((inicio_i >= dimTablero || inicio_j >= dimTablero) || (inicio_i < 0 || inicio_j < 0) || (fin_i >= dimTablero || fin_j >= dimTablero))
 		return false;
 	else if (objTablero.tablero[fin_i][fin_j] == 1)
 		return false;
