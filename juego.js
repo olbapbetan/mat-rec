@@ -52,7 +52,7 @@ function dibujarTablero(tableData) {
 }
 
 
-function hayCamino(tablero, inicio_i, inicio_j, fin_i, fin_j){
+function hayCamino(inicio_i, inicio_j, fin_i, fin_j){
 	if (objTablero.tablero[fin_i][fin_j] == 1)
 		return false;
 	else if ((inicio_i >= dimTablero || inicio_j >= dimTablero) || (inicio_i < 0 || inicio_j < 0))
@@ -67,13 +67,13 @@ function hayCamino(tablero, inicio_i, inicio_j, fin_i, fin_j){
 		objTablero.tablero[inicio_i][inicio_j] = 2;
 		ruta.push("(" + inicio_i + "," + inicio_j + ")");
 
-		var der = hayCamino(tablero, inicio_i, inicio_j+1, fin_i, fin_j);
+		var der = hayCamino(inicio_i, inicio_j+1, fin_i, fin_j);
 		if (!der){
-			var aba = hayCamino(tablero, inicio_i+1, inicio_j, fin_i, fin_j);
+			var aba = hayCamino(inicio_i+1, inicio_j, fin_i, fin_j);
 			if (!aba){
-				var izq = hayCamino(tablero, inicio_i, inicio_j-1, fin_i, fin_j);
+				var izq = hayCamino(inicio_i, inicio_j-1, fin_i, fin_j);
 				if (!izq){
-					var arr = hayCamino(tablero, inicio_i-1, inicio_j, fin_i, fin_j);
+					var arr = hayCamino(inicio_i-1, inicio_j, fin_i, fin_j);
 					if (!arr){
 						objTablero.tablero[inicio_i][inicio_j] = 0;
 						ruta.pop();
@@ -86,6 +86,8 @@ function hayCamino(tablero, inicio_i, inicio_j, fin_i, fin_j){
 	}
 }
 
+
+// interacción con el usuario
 function invocarDibujarTablero(){
 	dimTablero = parseInt(document.getElementById("dim").value);
 	probPeones = parseInt(document.getElementById("prob").value);
@@ -102,6 +104,7 @@ function invocarDibujarTablero(){
 	$("#btn_jugar").show();
 }
 
+
 function invocarJugar(){
 	// capturo valores al momento de la jugada
 	iInicial = parseInt(document.getElementById("iInicial").value);
@@ -109,7 +112,7 @@ function invocarJugar(){
 	iFinal = parseInt(document.getElementById("iFinal").value);
 	jFinal = parseInt(document.getElementById("jFinal").value);
 
-	resultado = hayCamino(objTablero, iInicial, jInicial, iFinal, jFinal)
+	resultado = hayCamino(iInicial, jInicial, iFinal, jFinal)
 	dibujarTablero(objTablero.tablero);
 
 	if (resultado){
