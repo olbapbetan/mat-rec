@@ -8,9 +8,9 @@ function crearTablero(dim, prob) {
 	for (var i = 0; i < dim; i++)
 		for (var j = 0; j < dim; j++)
 			if (Math.random() < prob/100) // deflacto
-				tablero[i][j] = 1;
+				tablero[i][j] = 1; // ocupada
 			else
-				tablero[i][j] = 0;
+				tablero[i][j] = 0; // libre
 
 			return tablero;
 }
